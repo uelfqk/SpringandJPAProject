@@ -1,15 +1,18 @@
 package domain.item;
 
+import domain.CategoryItem;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn
-public class Item {
+@DiscriminatorColumn(name = "dtype")
+public abstract class Item {
 
     @Id
     @GeneratedValue
@@ -22,5 +25,6 @@ public class Item {
 
     private int stockQuantity;
 
-
+    @OneToMany(mappedBy = "item")
+    private List<CategoryItem> categoryItems = new ArrayList<>();
 }
