@@ -1,13 +1,21 @@
 spring:
   datasource:
+<<<<<<< HEAD
     url: jdbc:h2:tcp://localhost/~/jpashop1
+=======
+    url: jdbc:h2:tcp://localhost/~/jpashop
+>>>>>>> 2c91c4ef68c5610ba5646bd92777cad1a05e362e
   username: sa
   password:
   driver-class-name: org.h2.Driver
 
 jpa:
   hibernate:
+<<<<<<< HEAD
     ddl-auto: create
+=======
+    ddl-auto: none
+>>>>>>> 2c91c4ef68c5610ba5646bd92777cad1a05e362e
   properties:
     hibernate:
       #show_sql: true

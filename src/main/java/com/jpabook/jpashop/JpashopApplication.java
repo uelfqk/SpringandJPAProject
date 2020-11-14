@@ -18,7 +18,6 @@ public class JpashopApplication {
 		// 비즈니스상 우위에 있다고 연관관계 주인으로 정하지 말고
 		// 외래키가 있는곳을 항상 연관관계 주인으로 선택해라.
 
-
 		// XToOne 시리즈는 기본 fetch Type 이 EAGER 로 설정 되어있기 때문에
 		// 모두 fetch Type 을 LAZY 으로 변경 해야한다.
 		// 이유 : N + 1 문제 발생
