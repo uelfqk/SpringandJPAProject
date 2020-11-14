@@ -27,4 +27,10 @@ public abstract class Item {
 
     @OneToMany(mappedBy = "item")
     private List<CategoryItem> categoryItems = new ArrayList<>();
+
+    //==양방향 연관관계에서 편의 메소드==//
+    public void setCategoryItem(CategoryItem categoryItem) {
+        this.categoryItems.add(categoryItem);
+        categoryItem.setItem(this);
+    }
 }

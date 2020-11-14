@@ -40,4 +40,20 @@ public class Order {
 
     @Enumerated(value = EnumType.STRING)
     private OrderStatus status; // 주문상태 [ORDER, CANCEL]
+
+    //==양방향 연관관계에서 편의 메소드==//
+    public void setMember(Member member) {
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        this.orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 }
