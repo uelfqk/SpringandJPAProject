@@ -8,7 +8,26 @@ public class SelectNativeQueryBuilder {
         this.query = new StringBuilder();
     }
 
+    public static SelectNativeQueryBuilder createBy(String entityName) {
+        try {
+            Class entity = Class.forName("jpabook.jpashop.query.domain." + entityName);
+            entity.getDeclaredField("");
+        } catch (Exception e) {
+            System.out.println("e = " + e.toString());
+        }
+
+        SelectNativeQueryBuilder builder = new SelectNativeQueryBuilder();
+
+        return builder;
+    }
+
     public static SelectNativeQueryBuilder createBy() {
+        try {
+            Class c = Class.forName("jpabook.jpashop.query.domain.TMember");
+            c.getDeclaredField("name");
+        } catch (Exception e) {
+            System.out.println("e = " + e.toString());
+        }
         SelectNativeQueryBuilder builder = new SelectNativeQueryBuilder();
         return builder;
     }

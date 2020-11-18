@@ -5,19 +5,45 @@ import jpabook.jpashop.query.domain.TMember;
 import jpabook.jpashop.query.domain.TTeam;
 import jpabook.jpashop.query.builder.SelectNativeQueryBuilder;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-@SpringBootTest
+//@SpringBootTest
 class MakeNativeQueryTest {
 
-    @PersistenceContext
-    private EntityManager em;
+//    @PersistenceContext
+//    private EntityManager em;
+
+    @Test
+    @DisplayName(value = "리플렉션 테스트")
+    void reflectionTest() throws Exception {
+        try {
+            Class entity = Class.forName("jpabook.jpashop.query.domain.TMember");
+            Object o = entity.newInstance();
+
+            Method setName = entity.getDeclaredMethod("setName", String.class);
+            setName.invoke(o, "string");
+
+            Field name = entity.getDeclaredField("name");
+            name.setAccessible(true);
+            Object findName = name.get(o);
+
+//            name.set(entity, 1);
+
+            System.out.println("name = " + findName);
+        } catch (Exception e) {
+            System.out.println("e = " + e);
+        }
+    }
+
 
     @Test
     void makeNativeQueryBasicSelect() {

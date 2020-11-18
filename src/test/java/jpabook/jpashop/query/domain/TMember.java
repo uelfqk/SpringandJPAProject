@@ -18,6 +18,8 @@ public class TMember {
 
     private TTeam team;
 
+    public String aaa;
+
     public int getCode() {
         return code;
     }
@@ -48,5 +50,13 @@ public class TMember {
 
     public void setTeam(TTeam team) {
         this.team = team;
+    }
+
+    public static TMember createMember(int code, String name, int age) {
+        TMember member = new TMember();
+        member.setCode(code);
+        member.setName(name);
+        member.setAge(age);
+        return member;
     }
 }
