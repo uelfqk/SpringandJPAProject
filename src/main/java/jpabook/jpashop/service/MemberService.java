@@ -59,4 +59,20 @@ public class MemberService {
     public Member findMember(Long memberId) {
         return memberRepository.findOne(memberId);
     }
+
+    @Transactional
+    public void updateMember(Long memberId, String name) {
+        Member findMember = memberRepository.findOne(memberId);
+        findMember.setName(name);
+    }
+
+    // Update 는 변경성 메소드
+    // 이렇게 되면 Command 와 쿼리를 분리하는것에 위배된다.
+    // findOne(memberId) 를 조회하고 Member 를 반환하게 되면 Member 를 조회하는 꼴이 된다.
+    // 처리 순서 : Member 조회 -> Member 변경 -> 반환 (Member 조회)
+//   @Transactional
+//    public Member updateMember(Long memberId, String name) {
+//        Member findMember = memberRepository.findOne(memberId);
+//        findMember.setName(name);
+//    }
 }
